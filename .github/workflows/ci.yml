@@ -27,3 +27,15 @@ jobs:
         run: cargo +1.94.0 test --locked
       - name: Clippy
         run: cargo +1.94.0 clippy --locked --all-targets -- -D warnings
+
+  dockerfile:
+    name: Hadolint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # hadolint is the recognized SAST for the Dockerfile half of this repo.
+      - uses: hadolint/hadolint-action@06be81baf89a55ffd0e24b8f04a4185738dd3387 # v3.5.0
+        with:
+          dockerfile: Dockerfile
