@@ -2,7 +2,7 @@
 
 ## Report a vulnerability
 
-Email **clay@twn.systems** to report a suspected vulnerability. Do not open a public issue for an unpatched vulnerability. Include the affected version or commit, impact, and steps to reproduce. The maintainers will acknowledge reports as soon as practical and coordinate a fix and disclosure with the reporter.
+Email **security@tasmanian.cloud** to report a suspected vulnerability. Do not open a public issue for an unpatched vulnerability. Include the affected version or commit, impact, and steps to reproduce. The maintainers will acknowledge reports as soon as practical and coordinate a fix and disclosure with the reporter.
 
 Once GitHub private vulnerability reporting is enabled in repository settings, reports can also be submitted through [GitHub Security Advisories](https://github.com/Ptyktos/figma-import/security/advisories/new).
 
