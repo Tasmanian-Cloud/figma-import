@@ -1,7 +1,7 @@
 # figma-import
 
-[![CI](https://github.com/Ptyktos/figma-import/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Ptyktos/figma-import/actions/workflows/ci.yml)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Ptyktos/figma-import/badge)](https://scorecard.dev/viewer/?uri=github.com/Ptyktos/figma-import)
+[![CI](https://github.com/Tasmanian-Cloud/figma-import/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Tasmanian-Cloud/figma-import/actions/workflows/ci.yml)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Tasmanian-Cloud/figma-import/badge)](https://scorecard.dev/viewer/?uri=github.com/Tasmanian-Cloud/figma-import)
 
 Import a binary Figma `.fig` export and receive a normalized `PenDocument` JSON tree. This is a small HTTP service built around the [op-figma parser](https://github.com/ZSeven-W/openpencil/tree/main/crates/op-figma), intended for trusted, server-side import pipelines.
 
