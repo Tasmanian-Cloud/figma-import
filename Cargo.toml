@@ -1,8 +1,9 @@
 [package]
 name = "figma-import"
 version = "0.1.0"
-edition = "2021"
-rust-version = "1.82"
+edition = "2024"
+rust-version = "1.94"
+publish = false
 license = "MIT"
 description = "HTTP service: upload a Figma .fig file, get back a normalized PenDocument JSON tree (page/frame/text/layout/image-ref) via ZSeven-W/openpencil's op-figma parser."
 

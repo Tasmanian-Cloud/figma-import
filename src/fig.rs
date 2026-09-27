@@ -6,7 +6,7 @@
 //! convenience index over that same JSON, computed by walking the wire
 //! representation rather than the Rust types.
 
-use op_figma::{detect_kind, parse_fig_binary_with_images, FigFileKind, FigLayoutMode};
+use op_figma::{FigFileKind, FigLayoutMode, detect_kind, parse_fig_binary_with_images};
 use serde::Serialize;
 use serde_json::{Map, Value};
 use std::collections::BTreeMap;
@@ -167,12 +167,11 @@ fn walk_node(
     let ty = obj.get("type").and_then(Value::as_str).unwrap_or("unknown");
     *counts.entry(ty.to_string()).or_insert(0) += 1;
 
-    if ty == "text" {
-        if let Some(text) = extract_text_content(obj) {
-            if !text.trim().is_empty() {
-                texts.push(text);
-            }
-        }
+    if ty == "text"
+        && let Some(text) = extract_text_content(obj)
+        && !text.trim().is_empty()
+    {
+        texts.push(text);
     }
 
     if ty == "image" {

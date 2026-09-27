@@ -3,9 +3,9 @@
 //! caller (e.g. website-builder's import route) can branch on `code`
 //! instead of pattern-matching a free-text message.
 
+use axum::Json;
 use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
-use axum::Json;
 use serde::Serialize;
 
 #[derive(Debug, thiserror::Error)]
@@ -21,7 +21,9 @@ pub enum AppError {
     )]
     UnknownFormat,
 
-    #[error("Figma clipboard-JSON export (.fig.json) is not accepted by this endpoint; upload the binary .fig file")]
+    #[error(
+        "Figma clipboard-JSON export (.fig.json) is not accepted by this endpoint; upload the binary .fig file"
+    )]
     ClipboardJsonNotSupported,
 
     #[error("failed to parse .fig binary: {0}")]

@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: Build and publish release assets
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Install Rust 1.94+
+        run: rustup toolchain install 1.94.0 --profile minimal
+      - name: Check tag matches package version
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          PACKAGE_VERSION=$(sed -n 's/^version = "\([^"]*\)"$/\1/p' Cargo.toml | head -n 1)
+          test "v${PACKAGE_VERSION}" = "${TAG_NAME}"
+      - name: Build
+        run: cargo +1.94.0 build --release --locked --bin figma-import
+      - name: Package assets
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          mkdir -p dist
+          cp target/release/figma-import dist/figma-import-linux-x86_64
+          cp LICENSE README.md dist/
+          tar -czf "dist/figma-import-${TAG_NAME}-linux-x86_64.tar.gz" -C dist figma-import-linux-x86_64 LICENSE README.md
+          (cd dist && sha256sum "figma-import-${TAG_NAME}-linux-x86_64.tar.gz" > SHA256SUMS)
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ github.ref_name }}
+        run: gh release create "$TAG_NAME" dist/figma-import-"$TAG_NAME"-linux-x86_64.tar.gz dist/SHA256SUMS --generate-notes
