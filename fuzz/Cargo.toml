@@ -1,0 +1,35 @@
+[package]
+name = "figma-import-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+figma-import = { path = ".." }
+axum = "0.8"
+tokio = { version = "1", features = ["rt", "macros"] }
+tower = { version = "0.5", features = ["util"] }
+http-body-util = "0.1"
+
+# Prevent cargo from walking up to the service crate's directory — the fuzz
+# crate is its own workspace root.
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "fuzz_import"
+path = "fuzz_targets/fuzz_import.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "fuzz_http"
+path = "fuzz_targets/fuzz_http.rs"
+test = false
+doc = false
+bench = false
