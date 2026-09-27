@@ -1,0 +1,4 @@
+# Ownership for the code-owner review requirement on the `main` ruleset.
+# Two owners so an authoring owner can never be blocked out of merging:
+# the other one (or another org member) provides the code-owner approval.
+*       @yokoszn @kia-twn
