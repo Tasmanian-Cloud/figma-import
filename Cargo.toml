@@ -21,12 +21,12 @@ path = "src/main.rs"
 # parsing behaviour doesn't silently drift when upstream changes op-figma.
 op-figma = { git = "https://github.com/ZSeven-W/openpencil.git", rev = "e6c9bcef45c5b48b38f42824d56b5513178e1a0b", package = "op-figma" }
 
-axum = { version = "0.7", features = ["multipart"] }
+axum = { version = "0.8", features = ["multipart"] }
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal"] }
-tower-http = { version = "0.5", features = ["trace", "limit", "cors"] }
+tower-http = { version = "0.7", features = ["trace", "limit", "cors"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-thiserror = "1"
+thiserror = "2"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 # Builds the representative fixture the test suite and `examples/make_fixture.rs`
