@@ -1,0 +1,5 @@
+# Code ownership for the required code-owner review on the default-branch
+# ruleset. Three human owners: the authoring owner can never be locked
+# out of merging (the other two provide the code-owner approval).
+# kia-twn is automation, not a review target — deliberately not listed.
+*       @yokoszn @paperboygold @twn-lloyd
